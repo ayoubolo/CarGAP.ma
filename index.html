@@ -18,19 +18,25 @@
         
         .pulse-btn { animation: pulse 2s infinite; }
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(22, 163, 74, 0); }
             100% { transform: scale(1); }
         }
 
-        .sticky-cta { transition: opacity 0.3s ease, transform 0.3s ease; }
+        /* Elements Hiding Logic */
+        .sticky-cta, .whatsapp-float { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .cta-hidden { opacity: 0; transform: translateY(100%); pointer-events: none; }
+        .wa-hidden { opacity: 0; transform: scale(0) rotate(90deg); pointer-events: none; }
 
-        /* Phone-Optimized Vertical Video Container (9:16) */
+        /* Shared Rounded Borders */
+        .rounded-premium { border-radius: 2.5rem; }
+        .rounded-slide { border-radius: 1.5rem; }
+
+        /* Video Container (9:16) */
         .video-wrapper-phone {
             position: relative;
             width: 100%;
-            max-width: 320px; /* Perfect width for mobile display */
+            max-width: 320px; 
             margin: 0 auto;
             border-radius: 2.5rem;
             overflow: hidden;
@@ -44,9 +50,54 @@
             height: 100%;
             object-fit: cover;
         }
+
+        /* Image Scroll & Zoom Effect */
+        .scroll-container {
+            perspective: 1000px;
+            padding-bottom: 0.75rem; 
+        }
+        .product-card {
+            transition: transform 0.5s ease;
+            transform-origin: center;
+        }
+        .product-card:active, .product-card:hover {
+            transform: scale(1.05);
+        }
+        .product-card img {
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .product-card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Animation for icons */
+        @keyframes bounce-x {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-5px); }
+        }
+        .animate-bounce-x { animation: bounce-x 1s infinite; }
+
+        /* Fixed Overlap: WhatsApp position */
+        .whatsapp-float {
+            bottom: 100px; 
+        }
+        @media (min-width: 768px) {
+            .whatsapp-float { bottom: 30px; }
+        }
+
+        /* Timer inside Card */
+        .timer-embedded {
+            background: #fffafa;
+            border-bottom: 1px dashed #fee2e2;
+        }
     </style>
 </head>
 <body class="pt-16 pb-24">
+
+    <!-- WhatsApp Floating Button -->
+    <a id="whatsapp-btn" href="https://wa.me/212767137261" class="whatsapp-float fixed right-4 z-[60] bg-green-500 text-white p-4 rounded-full shadow-2xl pulse-btn">
+        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
 
     <!-- Navigation Header -->
     <nav class="fixed top-0 left-0 right-0 glass-header h-16 px-6 flex items-center justify-between">
@@ -54,18 +105,13 @@
             <div class="bg-red-600 text-white p-1.5 rounded-lg shadow-md">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
             </div>
-            <span class="font-black text-xl tracking-tighter uppercase">Car<span class="text-red-600 font-black">Gap</span></span>
+            <span class="font-black text-xl tracking-tighter uppercase">Car<span class="text-red-600 font-black">Gap</span>.ma</span>
         </div>
-        <div class="flex items-center gap-2">
-             <a href="https://wa.me/212767137261" class="bg-green-500 text-white px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 shadow-sm">
-                <span>واتساب</span>
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            </a>
-        </div>
+        <div class="bg-red-50 text-red-600 px-3 py-1 rounded-full text-[10px] font-bold">عرض محدود 🔥</div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="bg-gray-50 px-6 pt-10 pb-16 text-center">
+    <header class="bg-gray-50 px-6 pt-10 pb-12 text-center">
         <div class="inline-block bg-red-100 text-red-700 px-4 py-1 rounded-full text-[10px] font-bold mb-4 uppercase tracking-widest">
             توصيل مجاني وسريع في المغرب 🇲🇦
         </div>
@@ -74,103 +120,179 @@
         </h1>
         <p class="text-gray-500 text-lg mb-8 max-w-sm mx-auto italic">الحل الأنيق والعملي اللي كيسد الفراغ فثواني.</p>
 
-        <!-- Product Video Optimized for Mobile (9:16) -->
-        <div class="video-wrapper-phone mb-10">
-            <video autoplay muted loop playsinline>
+        <!-- Product Video -->
+        <div class="video-wrapper-phone mb-8">
+            <video autoplay muted loop playsinline poster="images/image1.jpg">
                 <source src="video/product.mp4" type="video/mp4">
-                متصفحك لا يدعم تشغيل الفيديو.
             </video>
         </div>
 
-        <a href="#order" class="pulse-btn block w-full max-w-md mx-auto bg-red-600 text-white text-xl font-black py-5 rounded-2xl shadow-xl transition active:scale-95">
-            اضغط هنا لطلب العرض
-        </a>
+        <div class="flex flex-col gap-4 max-w-md mx-auto">
+            <a href="#order" class="pulse-btn block bg-red-600 text-white text-xl font-black py-5 rounded-2xl shadow-xl transition active:scale-95">
+                اضغط هنا لطلب العرض - 149 درهم
+            </a>
+            <p class="text-xs text-gray-400 font-bold uppercase tracking-widest italic">الدفع عند الاستلام 🤝</p>
+        </div>
     </header>
 
     <!-- Side Scroll Images Section -->
-    <section class="py-12 bg-white">
-        <h2 class="text-2xl font-black mb-6 px-6 text-right italic">صور المنتج (اسحب لليسار) 👇</h2>
-        
-        <div class="flex overflow-x-auto gap-4 px-6 no-scrollbar snap-x snap-mandatory">
-            <!-- Image 1 -->
-            <div class="flex-shrink-0 w-72 snap-center rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
-                <img src="images/image1.jpg" class="w-full h-80 object-cover" alt="Product Image 1">
+    <section class="py-8 bg-white overflow-hidden">
+        <h2 class="text-2xl font-black mb-5 px-6 text-right italic">صور المنتج 👇</h2>
+        <div class="flex overflow-x-auto gap-5 px-6 no-scrollbar snap-x snap-mandatory scroll-container">
+            <div class="product-card flex-shrink-0 w-72 snap-center rounded-slide overflow-hidden shadow-lg border-2 border-white bg-gray-100">
+                <img src="images/image1.jpg" class="w-full h-96 object-cover" alt="Product Image 1">
             </div>
-            <!-- Image 2 -->
-            <div class="flex-shrink-0 w-72 snap-center rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
-                <img src="images/image2.jpg" class="w-full h-80 object-cover" alt="Product Image 2">
+            <div class="product-card flex-shrink-0 w-72 snap-center rounded-slide overflow-hidden shadow-lg border-2 border-white bg-gray-100">
+                <img src="images/image2.jpg" class="w-full h-96 object-cover" alt="Product Image 2">
             </div>
-            <!-- Image 3 -->
-            <div class="flex-shrink-0 w-72 snap-center rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
-                <img src="images/image3.jpg" class="w-full h-80 object-cover" alt="Product Image 3">
+            <div class="product-card flex-shrink-0 w-72 snap-center rounded-slide overflow-hidden shadow-lg border-2 border-white bg-gray-100">
+                <img src="images/image3.jpg" class="w-full h-96 object-cover" alt="Product Image 3">
             </div>
-            <!-- Image 4 -->
-            <div class="flex-shrink-0 w-72 snap-center rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
-                <img src="images/image4.jpg" class="w-full h-80 object-cover" alt="Product Image 4">
+            <div class="product-card flex-shrink-0 w-72 snap-center rounded-slide overflow-hidden shadow-lg border-2 border-white bg-gray-100">
+                <img src="images/image4.jpg" class="w-full h-96 object-cover" alt="Product Image 4">
             </div>
-            <!-- Image 5 -->
-            <div class="flex-shrink-0 w-72 snap-center rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
-                <img src="images/image5.jpg" class="w-full h-80 object-cover" alt="Product Image 5">
+            <div class="product-card flex-shrink-0 w-72 snap-center rounded-slide overflow-hidden shadow-lg border-2 border-white bg-gray-100">
+                <img src="images/image5.jpg" class="w-full h-96 object-cover" alt="Product Image 5">
             </div>
         </div>
-        
-        <div class="flex justify-center gap-1.5 mt-6">
-            <div class="w-8 h-1.5 bg-red-600 rounded-full"></div>
-            <div class="w-2 h-1.5 bg-gray-200 rounded-full"></div>
-            <div class="w-2 h-1.5 bg-gray-200 rounded-full"></div>
-            <div class="w-2 h-1.5 bg-gray-200 rounded-full"></div>
-            <div class="w-2 h-1.5 bg-gray-200 rounded-full"></div>
+    </section>
+
+    <!-- Value Props -->
+    <section class="bg-gray-50 py-10 px-6">
+        <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white p-6 rounded-3xl text-center shadow-sm border border-gray-100">
+                <div class="text-3xl mb-3">⭐</div>
+                <div class="font-black text-sm text-gray-800">جودة ممتازة</div>
+            </div>
+            <div class="bg-white p-6 rounded-3xl text-center shadow-sm border border-gray-100">
+                <div class="text-3xl mb-3">🚚</div>
+                <div class="font-black text-sm text-gray-800">توصيل سريع</div>
+            </div>
+            <div class="bg-white p-6 rounded-3xl text-center shadow-sm border border-gray-100">
+                <div class="text-3xl mb-3">💰</div>
+                <div class="font-black text-sm text-gray-800">الدفع عند الاستلام</div>
+            </div>
+            <div class="bg-white p-6 rounded-3xl text-center shadow-sm border border-gray-100">
+                <div class="text-3xl mb-3">🔄</div>
+                <div class="font-black text-sm text-gray-800">ضمان الاستبدال</div>
+            </div>
         </div>
     </section>
 
     <!-- Tally Form Section -->
     <section id="order" class="p-6 bg-white scroll-mt-24">
         <div class="max-w-xl mx-auto" id="order-section">
-            <div class="bg-gray-50 rounded-[2.5rem] p-6 border-2 border-red-50 shadow-inner">
-                <div class="text-center mb-8">
-                    <h2 class="font-black text-3xl text-gray-900 leading-tight">معلومات التوصيل</h2>
-                    <p class="text-red-500 font-bold text-sm mt-2 uppercase tracking-wide italic">الدفع ملي توصلك السلعة 🤝</p>
-                </div>
+            <!-- Form Card with Embedded Timer -->
+            <div class="bg-white rounded-[2.5rem] overflow-hidden border-4 border-red-600 shadow-2xl">
                 
-                <iframe 
-                    data-tally-src="https://tally.so/embed/Bzb494?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
-                    loading="lazy" 
-                    width="100%" 
-                    height="450" 
-                    frameborder="0" 
-                    marginheight="0" 
-                    marginwidth="0" 
-                    title="Car Gap Filler Order Form">
-                </iframe>
+                <!-- ATTACHED TIMER BOX -->
+                <div class="timer-embedded p-5 text-center border-b border-red-100">
+                    <p class="text-red-600 font-black text-sm mb-3">⚠️ عرض حصري: ينتهي العرض في أقل من:</p>
+                    <div class="flex justify-center gap-3 text-gray-900 font-black">
+                        <div class="flex flex-col items-center">
+                            <span id="hours" class="text-xl bg-white w-12 h-10 flex items-center justify-center rounded-xl shadow-sm border border-red-50">00</span>
+                            <span class="text-[9px] text-gray-400 mt-1">ساعة</span>
+                        </div>
+                        <div class="text-xl pt-1 text-red-200">:</div>
+                        <div class="flex flex-col items-center">
+                            <span id="minutes" class="text-xl bg-white w-12 h-10 flex items-center justify-center rounded-xl shadow-sm border border-red-50">00</span>
+                            <span class="text-[9px] text-gray-400 mt-1">دقيقة</span>
+                        </div>
+                        <div class="text-xl pt-1 text-red-200">:</div>
+                        <div class="flex flex-col items-center">
+                            <span id="seconds" class="text-xl bg-white w-12 h-10 flex items-center justify-center rounded-xl shadow-sm border border-red-50 text-red-600">00</span>
+                            <span class="text-[9px] text-gray-400 mt-1">ثانية</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6">
+                    <div class="text-center mb-6">
+                        <h2 class="font-black text-2xl text-gray-900 leading-tight">معلومات التوصيل</h2>
+                        <p class="text-gray-400 font-bold text-xs mt-1 italic">املأ الاستمارة أسفله للطلب</p>
+                    </div>
+                    <iframe 
+                        data-tally-src="https://tally.so/embed/Bzb494?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+                        loading="lazy" 
+                        width="100%" 
+                        height="550" 
+                        frameborder="0" 
+                        title="Order Form">
+                    </iframe>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="p-12 text-center text-gray-400 text-xs border-t border-gray-50">
-        <p class="mb-2">© 2024 جميع الحقوق محفوظة</p>
-        <p class="font-bold uppercase tracking-widest text-gray-600">Car Gap Morocco Official</p>
+        <p class="mb-2 font-bold text-gray-600 uppercase">CAR GAP.ma Morocco</p>
+        <p>© 2024 جميع الحقوق محفوظة</p>
     </footer>
 
     <!-- Sticky Mobile Button -->
-    <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 p-4 glass-header md:hidden z-50 sticky-cta shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
-        <a href="#order" class="block w-full bg-red-600 text-white text-center font-black py-4 rounded-2xl shadow-xl text-lg active:scale-95 transition">
-            احجز الآن - 149 درهم
+    <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 p-4 glass-header md:hidden z-50 sticky-cta shadow-[0_-10px_30px_rgba(0,0,0,0.1)]">
+        <a href="#order" class="flex items-center justify-between bg-red-600 text-white px-6 py-5 rounded-2xl shadow-xl active:scale-95 transition">
+            <span class="font-black text-xl italic tracking-tight">احجز الآن - 149 درهم</span>
+            <svg class="w-6 h-6 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
         </a>
     </div>
 
     <script>
+        // Scroll Logic for hiding CTA/WA
         window.addEventListener('scroll', function() {
             const stickyCta = document.getElementById('sticky-cta');
+            const whatsappBtn = document.getElementById('whatsapp-btn');
             const orderSection = document.getElementById('order-section');
+            
             if (!orderSection) return;
+            
             const rect = orderSection.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 100 && rect.bottom > 100) {
+            const isAtForm = rect.top < window.innerHeight - 100 && rect.bottom > 100;
+            
+            if (isAtForm) {
                 stickyCta.classList.add('cta-hidden');
+                whatsappBtn.classList.add('wa-hidden');
             } else {
                 stickyCta.classList.remove('cta-hidden');
+                whatsappBtn.classList.remove('wa-hidden');
             }
         });
+
+        // Countdown Timer Logic
+        function startTimer() {
+            let endTime = localStorage.getItem('gap_filler_timer');
+            
+            if (!endTime) {
+                // Initial duration: 24h
+                endTime = new Date().getTime() + (24 * 60 * 60 * 1000);
+                localStorage.setItem('gap_filler_timer', endTime);
+            }
+
+            function update() {
+                const now = new Date().getTime();
+                const distance = endTime - now;
+
+                if (distance < 0) {
+                    const newEnd = new Date().getTime() + (24 * 60 * 60 * 1000);
+                    localStorage.setItem('gap_filler_timer', newEnd);
+                    location.reload();
+                    return;
+                }
+
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+            }
+
+            setInterval(update, 1000);
+            update();
+        }
+
+        startTimer();
     </script>
 
 </body>
