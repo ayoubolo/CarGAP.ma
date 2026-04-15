@@ -1,0 +1,180 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Gap Filler - Premium Morocco</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Tally Embed Script -->
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #ffffff; color: #111; overflow-x: hidden; scroll-behavior: smooth; }
+        .glass-header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid #f0f0f0; }
+        
+        /* Hide scrollbar for images */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .pulse-btn { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); }
+            100% { transform: scale(1); }
+        }
+
+        .sticky-cta { transition: opacity 0.3s ease, transform 0.3s ease; }
+        .cta-hidden { opacity: 0; transform: translateY(100%); pointer-events: none; }
+
+        /* Phone-Optimized Vertical Video Container (9:16) */
+        .video-wrapper-phone {
+            position: relative;
+            width: 100%;
+            max-width: 320px; /* Perfect width for mobile display */
+            margin: 0 auto;
+            border-radius: 2.5rem;
+            overflow: hidden;
+            aspect-ratio: 9 / 16;
+            background: #000;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+            border: 5px solid white;
+        }
+        .video-wrapper-phone video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="pt-16 pb-24">
+
+    <!-- Navigation Header -->
+    <nav class="fixed top-0 left-0 right-0 glass-header h-16 px-6 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <div class="bg-red-600 text-white p-1.5 rounded-lg shadow-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <span class="font-black text-xl tracking-tighter uppercase">Car<span class="text-red-600 font-black">Gap</span></span>
+        </div>
+        <div class="flex items-center gap-2">
+             <a href="https://wa.me/212767137261" class="bg-green-500 text-white px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 shadow-sm">
+                <span>واتساب</span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-gray-50 px-6 pt-10 pb-16 text-center">
+        <div class="inline-block bg-red-100 text-red-700 px-4 py-1 rounded-full text-[10px] font-bold mb-4 uppercase tracking-widest">
+            توصيل مجاني وسريع في المغرب 🇲🇦
+        </div>
+        <h1 class="text-4xl font-black mb-4 leading-tight">
+            نظم طوموبيلك <span class="text-red-600 font-black">وارتاح من ضياع</span> التليفون والسوارت!
+        </h1>
+        <p class="text-gray-500 text-lg mb-8 max-w-sm mx-auto italic">الحل الأنيق والعملي اللي كيسد الفراغ فثواني.</p>
+
+        <!-- Product Video Optimized for Mobile (9:16) -->
+        <div class="video-wrapper-phone mb-10">
+            <video autoplay muted loop playsinline>
+                <source src="video/product.mp4" type="video/mp4">
+                متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+        </div>
+
+        <a href="#order" class="pulse-btn block w-full max-w-md mx-auto bg-red-600 text-white text-xl font-black py-5 rounded-2xl shadow-xl transition active:scale-95">
+            اضغط هنا لطلب العرض
+        </a>
+    </header>
+
+    <!-- Side Scroll Images Section -->
+    <section class="py-12 bg-white">
+        <h2 class="text-2xl font-black mb-6 px-6 text-right italic">صور المنتج (اسحب لليسار) 👇</h2>
+        
+        <div class="flex overflow-x-auto gap-4 px-6 no-scrollbar snap-x snap-mandatory">
+            <!-- Image 1 -->
+            <div class="flex-shrink-0 w-72 snap-center rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
+                <img src="images/image1.jpg" class="w-full h-80 object-cover" alt="Product Image 1">
+            </div>
+            <!-- Image 2 -->
+            <div class="flex-shrink-0 w-72 snap-center rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
+                <img src="images/image2.jpg" class="w-full h-80 object-cover" alt="Product Image 2">
+            </div>
+            <!-- Image 3 -->
+            <div class="flex-shrink-0 w-72 snap-center rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
+                <img src="images/image3.jpg" class="w-full h-80 object-cover" alt="Product Image 3">
+            </div>
+            <!-- Image 4 -->
+            <div class="flex-shrink-0 w-72 snap-center rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
+                <img src="images/image4.jpg" class="w-full h-80 object-cover" alt="Product Image 4">
+            </div>
+            <!-- Image 5 -->
+            <div class="flex-shrink-0 w-72 snap-center rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
+                <img src="images/image5.jpg" class="w-full h-80 object-cover" alt="Product Image 5">
+            </div>
+        </div>
+        
+        <div class="flex justify-center gap-1.5 mt-6">
+            <div class="w-8 h-1.5 bg-red-600 rounded-full"></div>
+            <div class="w-2 h-1.5 bg-gray-200 rounded-full"></div>
+            <div class="w-2 h-1.5 bg-gray-200 rounded-full"></div>
+            <div class="w-2 h-1.5 bg-gray-200 rounded-full"></div>
+            <div class="w-2 h-1.5 bg-gray-200 rounded-full"></div>
+        </div>
+    </section>
+
+    <!-- Tally Form Section -->
+    <section id="order" class="p-6 bg-white scroll-mt-24">
+        <div class="max-w-xl mx-auto" id="order-section">
+            <div class="bg-gray-50 rounded-[2.5rem] p-6 border-2 border-red-50 shadow-inner">
+                <div class="text-center mb-8">
+                    <h2 class="font-black text-3xl text-gray-900 leading-tight">معلومات التوصيل</h2>
+                    <p class="text-red-500 font-bold text-sm mt-2 uppercase tracking-wide italic">الدفع ملي توصلك السلعة 🤝</p>
+                </div>
+                
+                <iframe 
+                    data-tally-src="https://tally.so/embed/Bzb494?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+                    loading="lazy" 
+                    width="100%" 
+                    height="450" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0" 
+                    title="Car Gap Filler Order Form">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="p-12 text-center text-gray-400 text-xs border-t border-gray-50">
+        <p class="mb-2">© 2024 جميع الحقوق محفوظة</p>
+        <p class="font-bold uppercase tracking-widest text-gray-600">Car Gap Morocco Official</p>
+    </footer>
+
+    <!-- Sticky Mobile Button -->
+    <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 p-4 glass-header md:hidden z-50 sticky-cta shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
+        <a href="#order" class="block w-full bg-red-600 text-white text-center font-black py-4 rounded-2xl shadow-xl text-lg active:scale-95 transition">
+            احجز الآن - 149 درهم
+        </a>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const stickyCta = document.getElementById('sticky-cta');
+            const orderSection = document.getElementById('order-section');
+            if (!orderSection) return;
+            const rect = orderSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100 && rect.bottom > 100) {
+                stickyCta.classList.add('cta-hidden');
+            } else {
+                stickyCta.classList.remove('cta-hidden');
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+```
